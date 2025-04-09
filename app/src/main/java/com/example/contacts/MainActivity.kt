@@ -1,18 +1,19 @@
 package com.example.contacts
 
 import android.content.Intent
-import android.content.res.Resources
 import android.os.Bundle
+import android.widget.ArrayAdapter
 import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.contacts.adapters.LastSeenUserAdapter
 import com.example.contacts.adapters.UserListItemAdapter
 import com.example.contacts.databinding.ActivityMainBinding
 import com.example.contacts.models.UserModel
 import com.example.contacts.screens.UserProfile
-import kotlin.math.log
 import kotlin.random.Random
 
 class MainActivity : AppCompatActivity() {
@@ -31,7 +32,28 @@ class MainActivity : AppCompatActivity() {
         }
         loadData()
         loadUI()
+        loadLastSeenUsers()
     }
+
+    private fun loadLastSeenUsers() {
+        var adapter1 = LastSeenUserAdapter(list)
+        var myLayoutManager = LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false)
+        LinearLayoutManager(this@MainActivity, LinearLayoutManager.HORIZONTAL, false)
+        binding.lastSeenUsersList.apply {
+            adapter = adapter1
+            layoutManager = myLayoutManager
+        }
+//    letters list
+        val uppercaseLetters = listOf<String>(
+            "A", "B", "C", "D", "E", "F", "G", "H", "I", "J",
+            "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T",
+            "U", "V", "W", "X", "Y", "Z"
+        )
+//        letter scroll
+        binding.lettersScroll.adapter =
+            ArrayAdapter<String>(this, R.layout.letter_item, uppercaseLetters)
+    }
+
 
     private fun loadData() {
         listOfImages.add(R.drawable.img1)
@@ -61,6 +83,8 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun loadUI() {
+
+
         var adapter = UserListItemAdapter(this@MainActivity, list)
         binding.usersList.adapter = adapter
         binding.usersList.setOnItemClickListener { adapterView, view, i, l ->
