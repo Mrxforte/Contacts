@@ -11,4 +11,6 @@
     <string name="share_location">Share Location</string>
     <string name="share_contact">Share contact</string>
     <string name="qr_code">Qr code</string>
+    <string name="_40_minutes_ago">40 minutes ago</string>
+    <string name="home">Home</string>
 </resources>

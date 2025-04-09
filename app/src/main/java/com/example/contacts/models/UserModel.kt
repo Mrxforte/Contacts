@@ -6,5 +6,5 @@ data class UserModel(
     var homePhoneNumber: String,
     var homePhoneNumberVideoCall: String,
     var mobilePhoneNumber: String,
-    var lastSeen: Int,
+    var lastSeen: String,
 )

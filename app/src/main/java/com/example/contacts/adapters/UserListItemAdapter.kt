@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ArrayAdapter
+import androidx.core.content.ContextCompat
 import com.example.contacts.R
 import com.example.contacts.databinding.UserListItemLayoutBinding
 import com.example.contacts.models.UserModel
@@ -17,7 +18,8 @@ class UserListItemAdapter(context: Context, val list: List<UserModel>) :
         } else {
             UserListItemLayoutBinding.bind(convertView)
         }
-        binding.userImg.setImageResource(list[position].userImg)
+        binding.userImg.foreground =
+            ContextCompat.getDrawable(binding.root.context, list[position].userImg)
         binding.userName.text = list[position].name
         binding.userPhone.text = list[position].mobilePhoneNumber
         return binding.root
