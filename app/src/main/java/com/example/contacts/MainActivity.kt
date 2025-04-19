@@ -85,6 +85,8 @@ class MainActivity : AppCompatActivity() {
     private fun loadUI() {
 
 
+
+
         var adapter = UserListItemAdapter(this@MainActivity, list)
         binding.usersList.adapter = adapter
         binding.usersList.setOnItemClickListener { adapterView, view, i, l ->
